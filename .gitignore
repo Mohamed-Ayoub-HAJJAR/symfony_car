@@ -1,0 +1,19 @@
+# Dépendances
+app/vendor/
+
+# Fichiers de configuration sensibles (très important !)
+app/.env.local
+app/.env.local.php
+app/.env.*.local
+
+# Fichiers générés (Cache et Logs)
+app/var/
+app/public/bundles/
+
+# Dossier des images uploadées (souvent exclu pour ne pas versionner les tests)
+app/public/uploads/
+
+# IDE et OS
+.idea/
+.vscode/
+.DS_Store
