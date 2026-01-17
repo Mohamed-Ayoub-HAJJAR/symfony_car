@@ -1,0 +1,353 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ car.brand }} {{ car.model }}{% endblock %}
+
+{% block body %}
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="{{ path('app_car') }}">Accueil</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="{{ path('app_car') }}">Véhicules</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">{{ car.model }} {{ car.brand }}</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Vehicle Detail Section -->
+    <section class="vehicle-detail-section">
+        <div class="container">
+            <div class="vehicle-detail-grid">
+                <!-- Gallery -->
+                <div class="vehicle-gallery">
+                    <div class="gallery-main">
+                        <img src="{{ asset('uploads/cars/' ~ car.images[0].name) }}" alt="Peugeot 308 - Vue principale" id="mainImage">
+                        <span class="vehicle-badge">Garantie 12 mois</span>
+                        <button class="gallery-nav gallery-prev" aria-label="Image précédente">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <button class="gallery-nav gallery-next" aria-label="Image suivante">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="gallery-thumbnails">
+                        {% if car.images|length > 0 %}
+                            {% for image in car.images %}
+                                <button class="thumbnail active">
+                                    <img src="{{ asset('uploads/cars/' ~ image.name) }}" alt="Vue avant">
+                                </button>
+                            {% endfor %}
+                    {% else %}
+
+
+                    {% endif %}    
+                    </div>
+                </div>
+
+                <!-- Vehicle Info -->
+                <div class="vehicle-detail-info">
+                    <div class="vehicle-header">
+                        <div>
+                            <h1 class="vehicle-detail-title">{{ car.brand }} {{ car.model }}</h1>
+                            <p class="vehicle-detail-subtitle">1.5 BlueHDi 130 S&S Allure</p>
+                        </div>
+                        <button class="favorite-btn" aria-label="Ajouter aux favoris">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="vehicle-price-box">
+                        <div class="price-main">
+                            <span class="price-label">Prix de vente</span>
+                            <span class="price-value">{{ car.price / 100 }} €</span>
+                        </div>
+                        <div class="price-monthly">
+                            <span>ou à partir de</span>
+                            <strong>189 €/mois</strong>
+                            <span>en LOA</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-specs-grid">
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Année</span>
+                                <span class="spec-value">{{ car.year }}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Kilométrage</span>
+                                <span class="spec-value">{{ car.mileage }} km</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <path d="M14 2v6h6"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Carburant</span>
+                                <span class="spec-value">{{ car.energy|capitalize }}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Puissance</span>
+                                <span class="spec-value">130 ch</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Boîte</span>
+                                <span class="spec-value">Manuelle</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <div>
+                                <span class="spec-label">Places</span>
+                                <span class="spec-value">5 places</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-actions">
+                        <a href="#contact-form" class="btn btn-primary btn-lg btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Je suis intéressé(e)
+                        </a>
+                        <a href="tel:+33123456789" class="btn btn-outline btn-lg btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Appeler le garage
+                        </a>
+                    </div>
+
+                    <div class="vehicle-guarantees">
+                        <div class="guarantee-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <span>Garantie 12 mois</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Contrôle 150 points</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <path d="M14 2v6h6"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            <span>Rapport Histovec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Vehicle Description & Details -->
+    <section class="vehicle-details-section">
+        <div class="container">
+            <div class="details-tabs">
+                <button class="tab-btn active" data-tab="caracteristiques">Caractéristiques</button>
+                <button class="tab-btn" data-tab="equipements">Équipements</button>
+                <button class="tab-btn" data-tab="description">Description</button>
+            </div>
+
+            <div class="tab-content active" id="caracteristiques">
+                <div class="specs-table">
+                    <div class="specs-category">
+                        <h3>Informations générales</h3>
+                        <table>
+                            <tr>
+                                <td>Marque</td>
+                                <td>{{ car.brand }}</td>
+                            </tr>
+                            <tr>
+                                <td>Modèle</td>
+                                <td>{{ car.model }}</td>
+                            </tr>
+                            <tr>
+                                <td>Version</td>
+                                <td>1.5 BlueHDi 130 S&S Allure</td>
+                            </tr>
+                            <tr>
+                                <td>Mise en circulation</td>
+                                <td>{{ car.year }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kilométrage</td>
+                                <td>{{ car.mileage / 100 }} km</td>
+                            </tr>
+                            <tr>
+                                <td>Couleur</td>
+                                <td>{{ car.color }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="specs-category">
+                        <h3>Motorisation</h3>
+                        <table>
+                            <tr>
+                                <td>Carburant</td>
+                                <td>{{ car.energy }}</td>
+                            </tr>
+                            <tr>
+                                <td>Puissance fiscale</td>
+                                <td>{{ car.fiscalPower }} CV</td>
+                            </tr>
+                            <tr>
+                                <td>Puissance DIN</td>
+                                <td>130 ch</td>
+                            </tr>
+                            <tr>
+                                <td>Cylindrée</td>
+                                <td>1 499 cm³</td>
+                            </tr>
+                            <tr>
+                                <td>Boîte de vitesse</td>
+                                <td>
+                                    {{ car.transmission }} 
+                                    {% if car.gears is not null%}
+                                        {{ car.gears }}  vitesses
+                                    {% endif %}    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="specs-category">
+                        <h3>Dimensions</h3>
+                        <table>
+                            <tr>
+                                <td>Nombre de portes</td>
+                                <td>{{ car.seats }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre de places</td>
+                                <td>{{ car.seats }}</td>
+                            </tr>
+                            <tr>
+                                <td>Longueur</td>
+                                <td>4 367 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Largeur</td>
+                                <td>1 852 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur</td>
+                                <td>1 441 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Volume coffre</td>
+                                <td>412 L</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="specs-category">
+                        <h3>Consommation</h3>
+                        <table>
+                            <tr>
+                                <td>Mixte</td>
+                                <td>3.9 L/100km</td>
+                            </tr>
+                            <tr>
+                                <td>Urbain</td>
+                                <td>4.5 L/100km</td>
+                            </tr>
+                            <tr>
+                                <td>Extra-urbain</td>
+                                <td>3.5 L/100km</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="equipements">
+                <div class="equipements-grid">
+                    {% set categories = ['Sécurité', 'Confort', 'Multimédia', 'Extérieur'] %}
+                    {% for cat in categories %}
+                        <div class="equipement-category">
+                            <h3>{{ cat }}</h3>
+                            <ul>
+                                {% set count = 0 %}
+                                {% for feature in car.features %}
+                                    {% if feature.category == cat %}
+                                        <li>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="20 6 9 17 4 12"/>
+                                            </svg>
+                                            {{ feature.name }}
+                                        </li>
+                                        {% set count = count + 1 %}
+                                    {% endif %}    
+                                {% endfor %}
+                                {% if count == 0 %}
+
+                                {% endif %}
+                            </ul>  
+                        </div>      
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="tab-content" id="description">
+                <div class="description-content">
+                    <h2>Description du véhicule</h2>
+                    <p>Découvrez cette magnifique Peugeot 308 en excellent état. Ce véhicule a été entièrement révisé dans nos ateliers et bénéficie d'un suivi d'entretien complet depuis sa première mise en circulation.</p>
+                    <p>Cette berline compacte allie élégance et performance grâce à son moteur BlueHDi 130 ch, reconnu pour sa sobriété et sa fiabilité. Parfaite pour un usage quotidien comme pour les longs trajets, elle offre un confort de conduite remarquable.</p>
+                    <h3>Points forts</h3>
+                    <ul>
+                        <li>Carnet d'entretien complet à jour</li>
+                        <li>Première main, véhicule non fumeur</li>
+                        <li>Pneus récents (moins de 10 000 km)</li>
+                        <li>Distribution effectuée à 40 000 km</li>
+                        <li>Aucun frais à prévoir</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
