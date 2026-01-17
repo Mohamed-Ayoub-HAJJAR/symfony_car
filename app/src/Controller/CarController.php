@@ -9,19 +9,55 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\CarRepository;
 use App\Entity\Car;
 use App\Form\CarFilterType;
+use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use App\Repository\GarageRepository;
 
 final class CarController extends AbstractController
 {
     #[Route('/car', name: 'app_car')]
-    public function index(CarRepository $carRepository, Request $request): Response
-    {
+    public function index(
+        CarRepository $carRepository,
+        Request $request,
+        MailerInterface $mailer,
+        GarageRepository $garageRepository
+    ): Response {
+
+        $garage = $garageRepository->findOneBy([]);
+
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->handleRequest($request);
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $contactData = $contactForm->getData();
+            // Création de l'email
+            $email = (new Email())
+                ->from('noreply@tondomaine.com')
+                ->replyTo($contactData['email'])
+                ->to('ton-email@domaine.com')
+                ->subject('Contact Site : ' . $contactData['sujet'])
+                ->html($this->renderView('emails/contact.html.twig', [
+                    'nom' => $contactData['nom'],
+                    'message' => $contactData['message'],
+                    'mail' => $contactData['email']
+                ]));
+
+            $mailer->send($email);
+
+            // Notification flash pour l'utilisateur
+            $this->addFlash('success', 'Votre message a bien été envoyé !');
+
+            // IMPORTANT : On redirige pour "nettoyer" le formulaire et éviter le renvoi au rafraîchissement
+            return $this->redirectToRoute('app_home');
+        }
+
         $form = $this->createForm(CarFilterType::class);
         $form->handleRequest($request);
-
         $filterData = $form->getData();
 
         $cars = $carRepository->findByFilters($filterData);
+
 
         if ($request->isXmlHttpRequest()) {
             return $this->render('car/_list_results.html.twig', [
@@ -32,6 +68,8 @@ final class CarController extends AbstractController
             'controller_name' => 'CarController',
             'cars' => $carRepository->findAll(),
             'filterForm' => $form->createView(),
+            'contactForm' => $contactForm->createView(),
+            'garage' => $garage,
         ]);
     }
 
