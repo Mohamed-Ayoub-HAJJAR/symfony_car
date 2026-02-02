@@ -1,0 +1,28 @@
+<section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <h2 class="search-title">Rechercher un véhicule</h2>
+                {{ form_start(filterForm, {'attr': {'class': 'search-form'}}) }}
+
+                    <div class="search-field">
+                        <label for="marque">Marque</label>
+                        {{ form_widget(filterForm.brand) }}
+                    </div>
+                    <div class="search-field">
+                        <label for="modele">Modèle</label>
+                        {{ form_widget(filterForm.model) }}
+                    </div>
+                    <div class="search-field">
+                        <label for="modele">Budget</label>
+                        {{ form_widget(filterForm.maxPrice) }}
+                    </div>
+                    <div class="search-field">
+                        <label for="modele">Année</label>
+                        {{ form_widget(filterForm.minYear) }}
+                    </div>
+                    
+                    {{ form_widget(filterForm.rechercher) }}
+                {{ form_end(filterForm) }}
+            </div>
+        </div>
+    </section>

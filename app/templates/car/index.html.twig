@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CarController!{% endblock %}
+{% block title %}Bienvenue!{% endblock %}
 
 {% block body %}
 <section class="hero">
@@ -35,35 +35,7 @@
     </section>
 
     <!-- Search Section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-box">
-                <h2 class="search-title">Rechercher un véhicule</h2>
-                {{ form_start(filterForm, {'attr': {'class': 'search-form'}}) }}
-
-                    <div class="search-field">
-                        <label for="marque">Marque</label>
-                        {{ form_widget(filterForm.brand) }}
-                    </div>
-                    <div class="search-field">
-                        <label for="modele">Modèle</label>
-                        {{ form_widget(filterForm.model) }}
-                    </div>
-                    <div class="search-field">
-                        <label for="modele">Budget</label>
-                        {{ form_widget(filterForm.maxPrice) }}
-                    </div>
-                    <div class="search-field">
-                        <label for="modele">Année</label>
-                        {{ form_widget(filterForm.minYear) }}
-                    </div>
-                    
-                    {{ form_widget(filterForm.rechercher) }}
-                {{ form_end(filterForm) }}
-            </div>
-        </div>
-    </section>
-
+    {% include 'car/_recherche_form.html.twig' with {'filterForm': filterForm} %}
     <!-- Vehicles Section -->
     <section id="vehicules" class="vehicles-section">
         <div class="container">
@@ -81,62 +53,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    {% include 'car/_services.html.twig' %}
+    {% include 'car/_services.html.twig' with {'garage' : garage} %}
     {% include 'car/_contact.html.twig' with {'contactForm': contactForm, 'garage' : garage} %}
-    <!-- Testimonials Section 
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Ce que disent nos clients</h2>
-                <p class="section-subtitle">Plus de 2500 clients satisfaits nous font confiance</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="testimonial-text">"Excellent accueil, équipe professionnelle et véhicule conforme à la description. Je recommande vivement AutoPro !"</p>
-                    <div class="testimonial-author">
-                        <span class="author-name">Marie D.</span>
-                        <span class="author-vehicle">Peugeot 3008</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="testimonial-text">"Deuxième achat chez AutoPro. Service impeccable, financement rapide et véhicule livré dans les temps. Merci !"</p>
-                    <div class="testimonial-author">
-                        <span class="author-name">Thomas L.</span>
-                        <span class="author-vehicle">Volkswagen Golf</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="testimonial-text">"Super reprise de mon ancienne voiture et un accompagnement personnalisé pour trouver mon nouveau SUV. Top !"</p>
-                    <div class="testimonial-author">
-                        <span class="author-name">Sophie M.</span>
-                        <span class="author-vehicle">Citroën C5 Aircross</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
--->
-    
+
 {% endblock %}

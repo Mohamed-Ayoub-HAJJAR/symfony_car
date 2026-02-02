@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Cookies - {{ garage.nom }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">Gestion des Cookies</h1>
+
+    <div class="content-wrapper">
+        <section class="mb-5">
+            <h2 class="h3">1. Qu'est-ce qu'un cookie ?</h2>
+            <p>
+                Un "cookie" est un petit fichier texte déposé sur votre ordinateur lors de la visite d'un site. 
+                Il permet de conserver des données utilisateur afin de faciliter la navigation et de permettre certaines fonctionnalités.
+            </p>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="h3">2. Quels cookies utilisons-nous ?</h2>
+            <p>Le site du garage <strong>{{ garage.nom }}</strong> utilise les types de cookies suivants :</p>
+            <ul>
+                <li><strong>Cookies techniques :</strong> Indispensables au bon fonctionnement du site (par exemple pour la sécurité de votre formulaire de contact).</li>
+                <li><strong>Cookies de mesure d'audience :</strong> Ils nous permettent de savoir combien de personnes visitent le site pour améliorer nos services.</li>
+            </ul>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="h3">3. Comment gérer vos cookies ?</h2>
+            <p>
+                Vous pouvez à tout moment choisir de désactiver ces cookies via les paramètres de votre navigateur :
+            </p>
+            <ul>
+                <li><strong>Chrome :</strong> Paramètres > Confidentialité et sécurité</li>
+                <li><strong>Firefox :</strong> Options > Vie privée et sécurité</li>
+                <li><strong>Safari :</strong> Préférences > Confidentialité</li>
+            </ul>
+            <p class="mt-3">
+                <em>Note : La désactivation des cookies peut limiter certaines fonctionnalités du site, comme l'envoi du formulaire de contact.</em>
+            </p>
+        </section>
+
+        <p class="text-muted mt-5 small">
+            Pour toute question concernant notre gestion des cookies, vous pouvez nous contacter à l'adresse : {{ garage.email }}
+        </p>
+    </div>
+</div>
+{% endblock %}

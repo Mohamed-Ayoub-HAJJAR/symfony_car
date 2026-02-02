@@ -22,6 +22,15 @@ class Garage
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
 
+    #[ORM\Column(length: 14, nullable: true)]
+    private ?string $siret = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $directeur = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +68,42 @@ class Garage
     public function setAdresse(?string $adresse): static
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    public function setSiret(?string $siret): static
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    public function getDirecteur(): ?string
+    {
+        return $this->directeur;
+    }
+
+    public function setDirecteur(string $directeur): static
+    {
+        $this->directeur = $directeur;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }

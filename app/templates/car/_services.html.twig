@@ -1,4 +1,119 @@
 <section id="services" class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Nos Services chez {{ garage.nom }}</h2>
+            <p class="section-subtitle">L'expertise de {{ garage.directeur }} et son équipe à votre service</p>
+        </div>
+        <div class="services-grid">
+            {# Service 1: Garantie #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Garantie 12 mois</h3>
+                <p class="service-description">Sécurité totale : tous nos véhicules sont garantis 12 mois minimum, pièces et main d'œuvre incluses.</p>
+            </div>
+
+            {# Service 2: Financement #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Financement</h3>
+                <p class="service-description">Étude personnalisée et solutions de crédit adaptées à votre budget avec nos partenaires.</p>
+            </div>
+
+            {# Service 3: Reprise #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Reprise véhicule</h3>
+                <p class="service-description">Estimation gratuite et immédiate de votre ancien véhicule pour l'achat d'une nouvelle occasion.</p>
+            </div>
+
+            {# Service 4: Atelier Mécanique #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Atelier Expert</h3>
+                <p class="service-description">Diagnostic électronique, freinage, embrayage et toutes réparations mécaniques complexes.</p>
+            </div>
+
+            {# NOUVEAU Service 5: Révision #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Entretien Rapide</h3>
+                <p class="service-description">Vidange, pneumatiques et révision constructeur pour préserver votre garantie.</p>
+            </div>
+
+            {# NOUVEAU Service 6: Carrosserie #}
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Carrosserie</h3>
+                <p class="service-description">Remise en état, peinture et débosselage pour rendre à votre véhicule son éclat d'origine.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="apropos" class="why-us-section">
+    <div class="container">
+        <div class="why-us-content">
+            <div class="why-us-text">
+                <h2 class="section-title">Pourquoi choisir {{ garage.nom }} ?</h2>
+                <p class="why-us-description">
+                    Depuis sa création, <strong>{{ garage.directeur }}</strong> et son équipe mettent tout leur savoir-faire au service de votre sécurité. 
+                    Situé à {{ garage.adresse }}, notre garage est devenu une référence pour la qualité de ses véhicules d'occasion.
+                </p>
+                <ul class="why-us-list">
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <strong>150 points de contrôle</strong> sur chaque véhicule
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Transparence totale sur l'historique d'entretien
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Engagement éco-responsable (traitement des déchets)
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-lg">Parler à un conseiller</a>
+            </div>
+            <div class="why-us-image">
+                {# Remplace par une vraie image de ton garage si tu en as une #}
+                <img src="{{ asset('images/garage-vincent-parrot.jpg') }}" alt="Atelier {{ garage.nom }}" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+{# <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nos Services</h2>
@@ -87,4 +202,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> #}

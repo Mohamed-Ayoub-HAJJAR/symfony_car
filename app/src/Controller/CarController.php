@@ -94,4 +94,31 @@ final class CarController extends AbstractController
             'html'   => $html
         ]);
     }
+
+    #[Route('/mentions-legales', name: 'app_legal')]
+    public function legal(GarageRepository $garageRepository): Response
+    {
+        // On récupère les infos du garage pour les afficher dynamiquement
+        $garage = $garageRepository->findOneBy([]);
+
+        return $this->render('legal/mentions_legales.html.twig', [
+            'garage' => $garage,
+        ]);
+    }
+
+    #[Route('/politique-de-confidentialite', name: 'app_privacy')]
+    public function privacy(GarageRepository $garageRepository): Response
+    {
+        return $this->render('legal/privacy.html.twig', [
+            'garage' => $garageRepository->findOneBy([]),
+        ]);
+    }
+
+    #[Route('/politique-cookies', name: 'app_cookies')]
+    public function cookies(GarageRepository $garageRepository): Response
+    {
+        return $this->render('legal/cookies.html.twig', [
+            'garage' => $garageRepository->findOneBy([]),
+        ]);
+    }
 }
