@@ -15,6 +15,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use App\Controller\Admin\FeatureCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class CarCrudController extends AbstractCrudController
 {
@@ -38,7 +41,7 @@ class CarCrudController extends AbstractCrudController
         yield MoneyField::new('price', 'Prix')->setCurrency('EUR')->setColumns(4);
         yield IntegerField::new('year', 'Année')->setColumns(2);
         yield IntegerField::new('mileage', 'Kilométrage')->setColumns(2);
-    // Section 2 : Caractéristiques Techniques (Tes nouveaux champs)
+        // Section 2 : Caractéristiques Techniques (Tes nouveaux champs)
         yield FormField::addPanel('Caractéristiques Techniques')->setIcon('fas fa-cogs');
         yield IntegerField::new('fiscalPower', 'Puissance Fiscale (CV)')->setColumns(3);
         yield ChoiceField::new('transmission', 'Boîte de vitesse')->setChoices([
@@ -51,7 +54,7 @@ class CarCrudController extends AbstractCrudController
             ->setColumns(3);
         yield IntegerField::new('seats', 'Nombre de places')->setColumns(3);
         yield TextField::new('color', 'Couleur')->setColumns(3);
-    // Section 3 : Médias et Description
+        // Section 3 : Médias et Description
         yield FormField::addPanel('Détails et Photos')->setIcon('fas fa-camera');
         yield TextEditorField::new('description', 'Description')->setColumns(12);
         yield AssociationField::new('features', 'Équipements & Options')
@@ -66,7 +69,43 @@ class CarCrudController extends AbstractCrudController
             ->onlyOnForms()
             ->setColumns(12);
 
-    // Champs pour la liste (Index)
+        // Champs pour la liste (Index)
         yield IdField::new('id')->hideOnForm();
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des voitures')
+            ->setPageTitle(Crud::PAGE_NEW, 'Ajouter une voiture')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Modifier la voiture')
+            ->setEntityLabelInSingular('Voiture')
+            ->setEntityLabelInPlural('Voitures');
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action
+                    ->setLabel('Ajouter une voiture')
+                    ->setIcon('fa fa-plus-circle');
+            })
+            ->update(Crud::PAGE_NEW, Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Enregistrer la voiture')
+                    ->setCssClass('btn');
+            })
+            ->update(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Mettre à jour la voiture');
+            })
+            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
+
+            ->update(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Sauvegarder et quitter')
+                    ->setIcon('fa fa-check');
+            })
+            ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE);
     }
 }

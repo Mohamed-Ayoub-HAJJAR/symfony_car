@@ -9,6 +9,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class GarageCrudController extends AbstractCrudController
 {
@@ -58,5 +61,40 @@ class GarageCrudController extends AbstractCrudController
 
         yield EmailField::new('email', 'Email de contact')
             ->setColumns('col-md-3');
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action
+                    ->setLabel('Ajouter un garage')
+                    ->setIcon('fa fa-plus-circle');
+            })
+            ->update(Crud::PAGE_NEW, Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Enregistrer le garage')
+                    ->setCssClass('btn');
+            })
+            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
+            ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE)
+            ->update(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN, function (Action $action) {
+                return $action
+                    ->setLabel('Mettre à jour le garage');
+            });
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // Titre de la page de liste
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des garage')
+            // Titre de la page de création
+            ->setPageTitle(Crud::PAGE_NEW, 'Ajouter un nouveau garage')
+            // Titre de la page d'édition
+            ->setPageTitle(Crud::PAGE_EDIT, 'Modifier le garage')
+            // Vous pouvez aussi changer le nom de l'entité partout
+            ->setEntityLabelInSingular('garage')
+            ->setEntityLabelInPlural('garages');
     }
 }

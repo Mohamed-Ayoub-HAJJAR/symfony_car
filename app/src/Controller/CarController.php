@@ -17,7 +17,7 @@ use App\Repository\GarageRepository;
 
 final class CarController extends AbstractController
 {
-    #[Route('/car', name: 'app_car')]
+    #[Route('/', name: 'app_car')]
     public function index(
         CarRepository $carRepository,
         Request $request,
