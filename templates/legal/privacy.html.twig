@@ -3,59 +3,77 @@
 {% block title %}Politique de Confidentialité - {{ garage.nom }}{% endblock %}
 
 {% block body %}
-<div class="container mt-5 mb-5">
-    <h1 class="mb-4">Politique de Confidentialité</h1>
 
-    <div class="content-wrapper">
-        <p class="lead">
-            La protection de vos données est une priorité pour le garage <strong>{{ garage.nom }}</strong>.
+<section class="legal-section">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Politique de Confidentialité</h1>
+
+        <p>La protection de vos données à caractère personnel est une priorité pour <strong>{{ garage.nom }}</strong>. Cette politique a pour but de vous informer sur la manière dont nous collectons, utilisons et protégeons vos données dans le cadre de l'utilisation du site <strong>automobile.com</strong>.</p>
+
+        <h2>1. Responsable du traitement</h2>
+        <p>Le responsable du traitement des données personnelles est la société :</p>
+        <div class="info-box">
+          <p><strong>{{ garage.nom }}</strong></p>
+          <p>Adresse : {{ garage.adresse }}</p>
+          <p>Email : {{ garage.email }}</p>
+        </div>
+
+        <h2>2. Données collectées</h2>
+        <p>Nous pouvons collecter les données suivantes lorsque vous utilisez nos services ou nos formulaires :</p>
+        <ul>
+          <li><strong>Données d'identification :</strong> Nom, prénom.</li>
+          <li><strong>Coordonnées :</strong> Adresse email, numéro de téléphone.</li>
+          <li><strong>Données relatives aux véhicules :</strong> Informations sur le véhicule que vous souhaitez vendre ou faire estimer.</li>
+          <li><strong>Données de navigation :</strong> Adresse IP, cookies, données de connexion.</li>
+        </ul>
+
+        <h2>3. Finalités du traitement</h2>
+        <p>Vos données sont collectées pour les besoins suivants :</p>
+        <ul>
+          <li>Gestion et suivi des demandes de contact et de rendez-vous.</li>
+          <li>Envoi d'offres commerciales ou de newsletters (uniquement avec votre consentement).</li>
+          <li>Amélioration de l'expérience utilisateur sur le Site.</li>
+          <li>Respect de nos obligations légales et réglementaires.</li>
+        </ul>
+
+        <h2>4. Base légale</h2>
+        <p>Le traitement de vos données repose sur l'une des bases suivantes :</p>
+        <ul>
+          <li><strong>Votre consentement :</strong> Pour l'utilisation des cookies ou l'envoi de newsletters.</li>
+          <li><strong>L'exécution d'un contrat :</strong> Pour répondre à une demande d'estimation ou de réservation de véhicule.</li>
+          <li><strong>Notre intérêt légitime :</strong> Pour assurer la sécurité et le bon fonctionnement du Site.</li>
+        </ul>
+
+        <h2>5. Durée de conservation</h2>
+        <p>Nous conservons vos données uniquement le temps nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
+        <ul>
+          <li><strong>Demandes de contact :</strong> 3 ans à compter du dernier contact.</li>
+          <li><strong>Données clients :</strong> 10 ans après la fin de la relation commerciale (obligations fiscales).</li>
+          <li><strong>Cookies :</strong> 13 mois maximum.</li>
+        </ul>
+
+        <h2>6. Destinataires des données</h2>
+        <p>Vos données sont principalement destinées à <strong>{{ garage.nom }}</strong>. Elles peuvent être transmises à nos prestataires techniques (Hébergeur Vercel, outils de messagerie) strictement pour l'exécution des services.</p>
+        <p><strong>Note :</strong> Étant donné que notre hébergeur <strong>Vercel Inc.</strong> est situé aux États-Unis, des transferts de données hors Union Européenne peuvent avoir lieu. Ces transferts sont encadrés par des clauses contractuelles types de la Commission Européenne pour garantir un niveau de protection adéquat.</p>
+
+        <h2>7. Vos droits (RGPD)</h2>
+        <p>Conformément au Règlement Général sur la Protection des Données, vous disposez des droits suivants :</p>
+        <ul>
+          <li><strong>Droit d'accès :</strong> Obtenir une copie de vos données.</li>
+          <li><strong>Droit de rectification :</strong> Corriger des données inexactes.</li>
+          <li><strong>Droit à l'effacement :</strong> Demander la suppression de vos données.</li>
+          <li><strong>Droit d'opposition :</strong> Vous opposer à l'utilisation de vos données pour motif légitime.</li>
+        </ul>
+        <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:{{ garage.email }}">{{ garage.email }}</a>.</p>
+
+        <h2>8. Sécurité</h2>
+        <p>Nous mettons en œuvre des mesures de sécurité techniques (chiffrement SSL, pare-feu) et organisationnelles pour protéger vos données contre tout accès non autorisé ou perte.</p>
+
+        <p style="margin-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 14px;">
+          <strong>Dernière mise à jour : </strong>Février 2026
         </p>
-
-        <section class="mb-5">
-            <h2 class="h3">1. Collecte des données</h2>
-            <p>
-                Nous collectons des informations via notre formulaire de contact : 
-                votre nom, prénom, adresse e-mail, numéro de téléphone et l'objet de votre demande.
-            </p>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="h3">2. Utilisation des données</h2>
-            <p>
-                Les données que vous nous transmettez sont utilisées exclusivement pour :
-            </p>
-            <ul>
-                <li>Répondre à vos demandes d'informations ou de devis.</li>
-                <li>Prendre rendez-vous pour une intervention en atelier.</li>
-                <li>Vous recontacter concernant un véhicule d'occasion.</li>
-            </ul>
-            <p><strong>Ces données ne sont jamais cédées ou vendues à des tiers.</strong></p>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="h3">3. Conservation des données</h2>
-            <p>
-                Vos données sont conservées pendant la durée nécessaire au traitement de votre demande, 
-                et pour une durée maximale de 3 ans après notre dernier contact.
-            </p>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="h3">4. Vos droits (RGPD)</h2>
-            <p>
-                Conformément au Règlement Général sur la Protection des Données, vous disposez d'un droit d'accès, 
-                de rectification et de suppression de vos données. Pour exercer ce droit, 
-                contactez-nous par email à : <strong>{{ garage.email }}</strong>.
-            </p>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="h3">5. Sécurité</h2>
-            <p>
-                Nous mettons en œuvre toutes les mesures de sécurité nécessaires pour protéger vos informations personnelles 
-                contre tout accès non autorisé ou toute modification.
-            </p>
-        </section>
+      </div>
     </div>
-</div>
+</section>
 {% endblock %}

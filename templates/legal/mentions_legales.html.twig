@@ -3,8 +3,7 @@
 {% block title %}Mentions Légales - {{ garage.nom }}{% endblock %}
 
 {% block body %}
-<div class="container mt-5 mb-5">
-    {# Utilisation de tes classes de titres #}
+{#<div class="container mt-5 mb-5">
     <h1 class="mb-4">Mentions Légales</h1>
 
     <div class="content-wrapper">
@@ -44,6 +43,107 @@
                 Les informations recueillies via le formulaire de contact sont destinées à la gestion de votre demande par le garage. Conformément à la loi « informatique et libertés », vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier en contactant : {{ garage.email }}.
             </p>
         </section>
+        
+
+        
     </div>
 </div>
+#}
+<section class="legal-section">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Mentions Légales</h1>
+
+        <h2>1. Éditeur du site</h2>
+        <p>Le site automobile.com (ci-après « le Site ») est édité et mis à jour par :</p>
+        <div class="info-box">
+          <p><strong>{{ garage.nom }}</strong></p>
+          <p>Forme juridique : Société à Responsabilité Limitée</p>
+          <p>Capital social : 50 000 €</p>
+          <p>Numéro SIRET : {{ garage.siret }}</p>
+          <p>Numéro TVA intracommunautaire : FR 12 345 678 901</p>
+          <p>Adresse du siège social : {{ garage.adresse }}</p>
+          <p>Téléphone : {{ garage.telephone }}</p>
+          <p>Email : <a href="mailto:contact@automotive.com">{{ garage.email }}</a></p>
+          <p>Directeur de la publication : {{ garage.directeur }}</p>
+        </div>
+
+        <h2>2. Hébergement</h2>
+        <p>Le Site est hébergé par :</p>
+        <div class="info-box">
+          <p><strong>Vercel Inc.</strong></p>
+          <p>Adresse : 340 S Lemon Ave, Walnut, CA 91789, USA</p>
+          <p>Site web : <a href="https://vercel.com" target="_blank">www.vercel.com</a></p>
+        </div>
+
+        <h2>3. Propriété Intellectuelle</h2>
+        <h3>3.1 Droits d'auteur</h3>
+        <p>Tous les contenus présents sur le Site (textes, images, vidéos, logos, graphismes, mise en page, etc.) sont la propriété exclusive d'AutoMotive SARL ou de ses partenaires, et sont protégés par les lois relatives aux droits d'auteur et à la propriété intellectuelle.</p>
+        <p>Toute reproduction, adaptation, traduction ou modification sans l'autorisation préalable écrite d'AutoMotive SARL est strictement interdite.</p>
+
+        <h3>3.2 Marques</h3>
+        <p>Les marques, logos et autres signes distinctifs mentionnés sur le Site sont la propriété de leurs titulaires respectifs.</p>
+
+        <h2>4. Limitation de responsabilité</h2>
+        <p>AutoMotive SARL décline toute responsabilité pour :</p>
+        <ul>
+          <li>Les erreurs ou omissions contenues dans les informations publiées sur le Site</li>
+          <li>Les interruptions du service ou les problèmes d'accès au Site</li>
+          <li>Les dommages directs ou indirects résultant de l'accès ou de l'utilisation du Site</li>
+          <li>La qualité ou la conformité des contenus externes auxquels le Site renvoie</li>
+        </ul>
+
+        <h2>5. Informations relatives aux véhicules</h2>
+        <h3>5.1 Exactitude des annonces</h3>
+        <p>AutoMotive SARL s'engage à fournir des informations exactes et à jour concernant les véhicules présentés. Cependant, les annonces sont basées sur les informations fournies par les vendeurs et peuvent être modifiées sans préavis.</p>
+
+        <h3>5.2 Tarification</h3>
+        <p>Les prix affichés sur le Site sont en euros TTC (Toutes Taxes Comprises). Des frais supplémentaires peuvent s'appliquer (frais d'immatriculation, assurance, financement, etc.).</p>
+
+        <h2>6. Conditions d'utilisation</h2>
+        <h3>6.1 Accès au Site</h3>
+        <p>L'accès au Site est gratuit. L'utilisateur accepte de respecter les lois et réglementations applicables en utilisant le Site.</p>
+
+        <h3>6.2 Comportement interdit</h3>
+        <p>L'utilisateur s'engage à ne pas :</p>
+        <ul>
+          <li>Télécharger ou utiliser du contenu à titre frauduleux</li>
+          <li>Nuire au fonctionnement du Site par des attaques informatiques</li>
+          <li>Poster du contenu offensant, discriminatoire ou illégal</li>
+          <li>Violer les droits de propriété intellectuelle d'autrui</li>
+          <li>Utiliser le Site à des fins commerciales sans autorisation</li>
+        </ul>
+
+        <h2>7. Protection des données personnelles</h2>
+        <p>Les données personnelles collectées lors de la navigation sur le Site ou via les formulaires de contact sont traitées conformément à la législation en vigueur (RGPD, CNIL).</p>
+        <p>Pour plus d'informations, veuillez consulter notre <a href="{{ path('app_privacy') }}">Politique de Confidentialité</a>.</p>
+
+        <h2>8. Cookies</h2>
+        <p>Le Site utilise des cookies pour améliorer l'expérience utilisateur. En continuant à naviguer sur le Site, vous acceptez l'utilisation de cookies.</p>
+        <p>Vous pouvez désactiver les cookies via les paramètres de votre navigateur.</p>
+
+        <h2>9. Liens externes</h2>
+        <p>Le Site peut contenir des liens vers des sites externes. AutoMotive SARL n'est pas responsable du contenu de ces sites et recommande à l'utilisateur de consulter les mentions légales des sites liés.</p>
+
+        <h2>10. Modification des conditions</h2>
+        <p>AutoMotive SARL se réserve le droit de modifier à tout moment les présentes mentions légales sans préavis. Les modifications entrent en vigueur dès leur publication sur le Site.</p>
+
+        <h2>11. Droit applicable</h2>
+        <p>Les présentes mentions légales sont régies par le droit français. Tout litige découlant de l'utilisation du Site sera soumis à la juridiction des tribunaux compétents du ressort de Paris.</p>
+
+        <h2>12. Contact et réclamations</h2>
+        <p>Pour toute question ou réclamation concernant les mentions légales, veuillez nous contacter :</p>
+        <div class="info-box">
+          <p><strong>AutoMotive SARL</strong></p>
+          <p>Email : <a href="mailto:legal@automotive.com">{{ garage.email }}</a></p>
+          <p>Téléphone : {{ garage.telephone }}</p>
+          <p>Adresse : {{ garage.adresse }}</p>
+        </div>
+
+        <p style="margin-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 14px;">
+          <strong>Dernière mise à jour : </strong>Février 2026
+        </p>
+      </div>
+    </div>
+  </section>
 {% endblock %}

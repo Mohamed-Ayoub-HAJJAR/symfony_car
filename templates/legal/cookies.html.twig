@@ -3,45 +3,55 @@
 {% block title %}Gestion des Cookies - {{ garage.nom }}{% endblock %}
 
 {% block body %}
-<div class="container mt-5 mb-5">
-    <h1 class="mb-4">Gestion des Cookies</h1>
 
-    <div class="content-wrapper">
-        <section class="mb-5">
-            <h2 class="h3">1. Qu'est-ce qu'un cookie ?</h2>
-            <p>
-                Un "cookie" est un petit fichier texte déposé sur votre ordinateur lors de la visite d'un site. 
-                Il permet de conserver des données utilisateur afin de faciliter la navigation et de permettre certaines fonctionnalités.
-            </p>
-        </section>
+<section class="legal-section">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Politique relative aux Cookies</h1>
 
-        <section class="mb-5">
-            <h2 class="h3">2. Quels cookies utilisons-nous ?</h2>
-            <p>Le site du garage <strong>{{ garage.nom }}</strong> utilise les types de cookies suivants :</p>
-            <ul>
-                <li><strong>Cookies techniques :</strong> Indispensables au bon fonctionnement du site (par exemple pour la sécurité de votre formulaire de contact).</li>
-                <li><strong>Cookies de mesure d'audience :</strong> Ils nous permettent de savoir combien de personnes visitent le site pour améliorer nos services.</li>
-            </ul>
-        </section>
+        <p>Lors de votre consultation du site <strong>automobile.com</strong>, des cookies sont déposés sur votre ordinateur, votre mobile ou votre tablette. Cette page vous permet de comprendre comment fonctionnent les cookies et comment utiliser les outils actuels afin de les paramétrer.</p>
 
-        <section class="mb-5">
-            <h2 class="h3">3. Comment gérer vos cookies ?</h2>
-            <p>
-                Vous pouvez à tout moment choisir de désactiver ces cookies via les paramètres de votre navigateur :
-            </p>
-            <ul>
-                <li><strong>Chrome :</strong> Paramètres > Confidentialité et sécurité</li>
-                <li><strong>Firefox :</strong> Options > Vie privée et sécurité</li>
-                <li><strong>Safari :</strong> Préférences > Confidentialité</li>
-            </ul>
-            <p class="mt-3">
-                <em>Note : La désactivation des cookies peut limiter certaines fonctionnalités du site, comme l'envoi du formulaire de contact.</em>
-            </p>
-        </section>
+        <h2>1. Qu'est-ce qu'un cookie ?</h2>
+        <p>Un cookie est un petit fichier texte déposé sur votre terminal lors de la visite d'un site ou de la consultation d'une publicité. Ils ont notamment pour but de collecter des informations relatives à votre navigation sur les sites et de vous adresser des services personnalisés.</p>
 
-        <p class="text-muted mt-5 small">
-            Pour toute question concernant notre gestion des cookies, vous pouvez nous contacter à l'adresse : {{ garage.email }}
+        <h2>2. Les cookies que nous utilisons</h2>
+        
+        <h3>2.1 Cookies techniques (Indispensables)</h3>
+        <p>Ces cookies sont nécessaires au fonctionnement du site. Ils permettent d'utiliser les principales fonctionnalités (par exemple, la gestion de votre session utilisateur Symfony ou la sécurité du formulaire de contact).</p>
+        <div class="info-box">
+          <p><strong>PHPSESSID :</strong> Conserve la session de l'utilisateur pour naviguer sans perte de données.</p>
+          <p><strong>_csrf_token :</strong> Protège contre les attaques de type Cross-Site Request Forgery sur vos formulaires.</p>
+        </div>
+
+        <h3>2.2 Cookies de mesure d'audience</h3>
+        <p>Ces cookies nous permettent de connaître l'utilisation et les performances de notre site et d'en améliorer le fonctionnement (par exemple, les pages le plus souvent consultées).</p>
+        <ul>
+          <li>Google Analytics (le cas échéant)</li>
+          <li>Vercel Analytics (si activé sur votre déploiement)</li>
+        </ul>
+
+        <h2>3. Accepter ou refuser les cookies</h2>
+        <p>Vous pouvez à tout moment choisir de désactiver ces cookies. Votre navigateur peut également être paramétré pour vous signaler les cookies qui sont déposés dans votre ordinateur et vous demander de les accepter ou non.</p>
+        
+        <p>Vous pouvez accepter ou refuser les cookies au cas par cas ou bien les refuser systématiquement une fois pour toutes.</p>
+
+        <div class="info-box">
+          <p><strong>Note :</strong> Si vous refusez les cookies techniques indispensables, vous risquez de ne plus pouvoir utiliser certaines fonctionnalités de <strong>{{ garage.nom }}</strong> (comme la connexion à votre compte client).</p>
+        </div>
+
+        <h2>4. Paramétrage du navigateur</h2>
+        <p>La configuration de chaque navigateur est différente. Elle est décrite dans le menu d'aide de votre navigateur :</p>
+        <ul>
+          <li><a href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank">Internet Explorer / Edge</a></li>
+          <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+          <li><a href="https://support.google.com/chrome/answer/95647?hl=fr" target="_blank">Chrome</a></li>
+          <li><a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies-preferences" target="_blank">Firefox</a></li>
+        </ul>
+
+        <p style="margin-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 14px;">
+          <strong>Dernière mise à jour : </strong>Février 2026
         </p>
+      </div>
     </div>
-</div>
+</section>
 {% endblock %}
