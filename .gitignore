@@ -1,19 +1,15 @@
-# Dépendances
-app/vendor/
 
-# Fichiers de configuration sensibles (très important !)
-app/.env.local
-app/.env.local.php
-app/.env.*.local
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
 
-# Fichiers générés (Cache et Logs)
-app/var/
-app/public/bundles/
-
-# Dossier des images uploadées (souvent exclu pour ne pas versionner les tests)
-app/public/uploads/
-
-# IDE et OS
-.idea/
-.vscode/
-.DS_Store
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
