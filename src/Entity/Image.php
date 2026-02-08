@@ -84,4 +84,9 @@ class Image
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return 'Image #' . ($this->id ?? 'Nouvelle');
+    }
 }

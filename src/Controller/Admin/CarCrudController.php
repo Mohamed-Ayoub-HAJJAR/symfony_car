@@ -16,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use App\Controller\Admin\FeatureCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
@@ -65,7 +66,10 @@ class CarCrudController extends AbstractCrudController
             ->autocomplete();
         yield CollectionField::new('images', 'Photos (Max 10)')
             ->setEntryType(ImageType::class)
+            ->setEntryIsComplex(true)
+            ->showEntryLabel(true)
             ->setFormTypeOption('by_reference', false)
+            ->setCssClass('field-car-images')
             ->onlyOnForms()
             ->setColumns(12);
 
@@ -107,5 +111,23 @@ class CarCrudController extends AbstractCrudController
                     ->setIcon('fa fa-check');
             })
             ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_CONTINUE);
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets->addHtmlContentToBody('
+        <style>
+            /* On vise uniquement le bouton dans la collection des images */
+            .field-car-images .field-collection-add-button {
+                font-size: 0 !important; /* On cache le texte par défaut */
+            }
+
+            .field-car-images .field-collection-add-button::before {
+                content: "📸 Ajouter une nouvelle image"; /* On met ton texte */
+                font-size: 0.8125rem; /* On remet la taille de texte standard EA */
+                font-weight: 600;
+            }
+        </style>
+    ');
     }
 }
